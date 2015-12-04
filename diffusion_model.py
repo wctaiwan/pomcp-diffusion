@@ -59,7 +59,7 @@ class DiffusionModel:
         self.infected = self.__simulate_infect(self.infected, self.resistant)
         self.observed_infected = self.__generate_observation()
 
-    # Simulates one step of the process on the given model after target has been vaccinated
+    # Simulates one step of the process on the given model after target has been quarantined
     # Returns the new set of infected nodes and the reward
     def simulate_step(self, infected, resistant, target):
         infected_, resistant_ = infected.copy(), resistant.copy()
@@ -67,7 +67,7 @@ class DiffusionModel:
             infected_.remove(target)
         resistant_.add(target)
         infected_ = self.__simulate_infect(infected_, resistant_)
-        # reward = -(additional nodes infected + 1), i.e. vaccinating at equilibrium has 0 reward
+        # reward = -(additional nodes infected + 1), i.e. quarantining at equilibrium has 0 reward
         return infected_, resistant_, len(infected)-len(infected_)-1
 
     # Returns a copy of the set of nodes observed as infected
