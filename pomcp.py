@@ -111,7 +111,7 @@ def main():
     values = []
     for j in range(ntrials):
         (infected_count, resistant_count, value), nsim_total = run_once()
-        print "Simuations: %d; infected: %d; resistant: %d; value: %d"  % \
+        print "Simulations: %d; infected: %d; resistant: %d; value: %d"  % \
             (nsim_total, infected_count, resistant_count, value)
         values.append(value)
     print "Mean value: %f; stdev: %f" % (numpy.mean(values), numpy.std(values))
